@@ -1,0 +1,14 @@
+module adder_subs(a0, a1, a2, a3, b0, b1, b2, b3, m, s0, s1, s2, s3, c, v);
+input a0,a1,a2,a3,b0,b1,b2,b3,m;
+output s0,s1,s2,s3,c,v;
+wire c0,c1,c2,c3, d0,d1,d2,d3;
+xor(d0, m, b0);
+xor(d1, m, b1);
+xor(d2, m, b2);
+xor(d3, m, b3);
+fullAdder f0(s0, c1, a0, d0, m);
+fullAdder f1(s1, c2, a1, d1, c1);
+fullAdder f2(s2, c3, a2, d2, c2);
+fullAdder f3(s3, c, a3, d3, c3);
+xor(v, c, c3);
+endmodule
