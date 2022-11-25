@@ -1,0 +1,19 @@
+module BCD_Ex3(a,b, c, d, w, x, y, z);
+input a, b, c, d;
+output w, x, y, z;
+wire f1, f2, f3, f4, f5, f6, f7, bnot,cnot,dnot;
+and(f1, b, c);
+and(f2, b, d);
+or(w, f1, f2, a);
+not(bnot, b);
+not(cnot, c);
+not(dnot, d);
+and(f3, bnot, c);
+and(f4, bnot, d);
+and(f5, b, cnot, dnot);
+or(x, f3, f4, f5);
+and(f6, cnot, dnot);
+and(f7, c, d);
+or(y, f6, f7);
+assign z = dnot;
+endmodule
