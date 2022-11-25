@@ -1,0 +1,17 @@
+module Ex_bcd(e3, e2, e1, e0, b3, b2, b1, b0);
+input e0, e1, e2, e3;
+output b0, b1, b2, b3;
+wire f1, f2, f3, f4, f5, enot0, enot1, enot2;
+not(b0, e0);
+not(enot0, e0);
+not(enot1, e1);
+not(enot2, e2);
+xor(b1, e0, e1);
+and(f1, enot1, enot2);
+and(f2, enot2, enot0);
+and(f3, e2, e1, e0);
+or(b2, f1, f2, f3);
+and(f4, e2, e3);
+and(f5, e3, e1, e0);
+or(b3, f4, f5);
+endmodule
