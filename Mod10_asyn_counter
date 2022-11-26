@@ -1,0 +1,11 @@
+module mod10_asyn_counter(high, clk, q);
+input high, clk;
+output [3:0] q;
+wire a, cnot;
+nand(a, q[3], q[1]);
+assign cnot = a;
+jk jk1(q[0],,high, high, clk, cnot);
+jk jk2(q[1],,high, high, q[0], cnot);
+jk jk3(q[2],,high, high, q[1], cnot);
+jk jk4(q[3],,high, high, q[2], cnot);
+endmodule
