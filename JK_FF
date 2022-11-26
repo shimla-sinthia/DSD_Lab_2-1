@@ -1,0 +1,14 @@
+module jk(q, qbar, j, k, clk, clr);
+input j, k, clk, clr;
+output q, qbar;
+wire a, y, c, d, ybar, b, cbar;
+nand(a, clr, clk, j, qbar);
+nand(b, clk, k, q);
+nand(ybar, clr, b, y);
+nand(y, a, ybar);
+not(cbar, clk);
+nand(c, cbar, y);
+nand(d, cbar, ybar);
+nand(q, c, qbar);
+nand(qbar, q, d, clr);
+endmodule
